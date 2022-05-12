@@ -444,10 +444,12 @@ module.exports.AmazonSocialLogin = async function AmazonSocialLogin(options = {}
 }
 
 module.exports.FacebookSocialLogin = async function FacebookSocialLogin(options = {}) {
+  const delay = ms => new Promise(res => setTimeout(res, ms))
   const typeUsername = async function({page, options} = {}) {
     try {
       const emailSelector = '#email'
       await page.waitForSelector(emailSelector)
+      await delay(3000)
       await page.type(emailSelector, options.username)
     } catch (err) {
       takeScreenshot(page, options)
