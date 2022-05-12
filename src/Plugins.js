@@ -1,7 +1,9 @@
 /* eslint-disable no-undef */
 'use strict'
 
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer-extra')
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+puppeteer.use(StealthPlugin())
 const authenticator = require('otplib').authenticator
 const fs = require('fs')
 
